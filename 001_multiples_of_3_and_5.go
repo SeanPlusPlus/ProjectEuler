@@ -6,6 +6,8 @@ import (
 	"github.com/dustin/go-humanize"
 )
 
+// https://projecteuler.net/problem=1
+
 func main() {
 	var limit int = 1000
 	var sum int = 0
