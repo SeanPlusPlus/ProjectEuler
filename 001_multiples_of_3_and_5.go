@@ -1,10 +1,6 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/dustin/go-humanize"
-)
+import "fmt"
 
 // https://projecteuler.net/problem=1
 //
@@ -19,11 +15,11 @@ func main() {
 	for i := 1; i < limit; i++ {
 		if i%3 == 0 {
 			sum += i
-		}
-		if i%5 == 0 {
+		} else if i%5 == 0 {
 			sum += i
+		} else {
+			continue
 		}
 	}
-	var sum64 = int64(sum)
-	fmt.Printf("%s\n", humanize.Comma(sum64))
+	fmt.Println(sum)
 }
