@@ -1,10 +1,6 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/dustin/go-humanize"
-)
+import "fmt"
 
 // https://projecteuler.net/problem=2
 //
@@ -17,4 +13,25 @@ import (
 // exceed four million, find the sum of the even-valued terms.
 
 func main() {
+
+	limit := 4000000
+	x := 1
+	y := 2
+	z := 0
+	sum := 2
+
+	for z < limit {
+		z = x + y
+
+		if z < limit {
+			if z%2 == 0 {
+				sum += z
+			}
+			x = y
+			y = z
+		}
+	}
+
+	fmt.Println(sum)
+
 }
