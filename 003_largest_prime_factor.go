@@ -17,6 +17,7 @@ import (
 func main() {
 
 	target := 13195
+	factors := make([]int, 100)
 
 	primes, err := readLines("primes/list1000.txt")
 	if err != nil {
@@ -31,6 +32,13 @@ func main() {
 
 	if (target % i) == 0 {
 		fmt.Println(target / i)
+		factors[0] = i
+	}
+
+	for _, element := range factors {
+		if element > 0 {
+			fmt.Println(element)
+		}
 	}
 
 }
