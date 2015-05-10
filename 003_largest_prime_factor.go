@@ -17,7 +17,7 @@ import (
 func main() {
 
 	target := 13195
-	var factors []int
+	var factors []int // good way to init
 
 	primes, err := readLines("primes/list1000.txt")
 	if err != nil {
