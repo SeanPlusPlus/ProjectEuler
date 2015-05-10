@@ -16,33 +16,41 @@ import (
 
 func main() {
 
-	target := 13195
-	var factors []int // good way to init
+	//target := 13195
+	target := 600851475143
+	var factors []int
+	var primes []int
 
-	primes, err := readLines("primes/list1000.txt")
+	// get primes from text file as slice of str elements
+	primes_string, err := readLines("primes/list1000.txt")
 	if err != nil {
 		log.Fatalf("readLines: %s", err)
 	}
 
-	i, err := strconv.Atoi(primes[2])
-	if err != nil {
-		fmt.Println(err)
-		os.Exit(2)
-	}
-
-	if (target % i) == 0 {
-		fmt.Println(target / i)
-		factors = append(factors, i)
-	}
-
-	for _, element := range factors {
-		if element > 0 {
-			fmt.Println(element)
+	// build primes slice with int elements
+	for _, element := range primes_string {
+		i, err := strconv.Atoi(element)
+		if err == nil {
+			primes = append(primes, i)
+		} else {
+			fmt.Println(err)
+			os.Exit(2)
 		}
 	}
 
-	fmt.Println(factors)
+	// walk through primes, and if factor, append to slice
+	for _, element := range primes {
+		if (target % element) == 0 {
+			target = (target / element)
+			factors = append(factors, element)
+		}
+		if target == 1 {
+			break
+		}
+	}
 
+	// show us the factors
+	fmt.Println(factors)
 }
 
 // readLines reads a whole file into memory
