@@ -12,15 +12,20 @@ import (
 //
 // Find the largest palindrome made from the product of two 3-digit numbers.
 
-func isPalindrome(num int) bool {
+func isPalindrome(num int, distance int) bool {
 	s := strconv.Itoa(num)
 	distance := 0
 	start := string(s[distance])
 	end := string(s[len(s)-1-distance])
-	if start == end {
 
+	// return true
+
+	// check next value
+	if start == end {
+		return number + isPalindrome(number-1)
+	} else {
+		return false
 	}
-	return true
 }
 
 func main() {
@@ -28,7 +33,8 @@ func main() {
 	x := 998
 	y := 999
 	for {
-		if isPalindrome((x * y)) {
+		answer := isPalindrome((x * y), 0)
+		if answer == true {
 			break
 		} else {
 			x -= 1
