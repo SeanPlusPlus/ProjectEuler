@@ -19,8 +19,8 @@ import (
 
 func main() {
 
-	// save series to string
-	series :=
+	// save s to string
+	s :=
 		`73167176531330624919225119674426574742355349194934
  		96983520312774506326239578318016984801869478851843
  		85861560789112949495459501737958331952853208805511
@@ -43,12 +43,12 @@ func main() {
  		71636269561882670428252483600823257530420752963450`
 
 	// remove newlines, tabs, and whitespace
-	series = strings.Replace(series, "\n", "", -1)
-	series = strings.Replace(series, "\t", "", -1)
-	series = strings.Replace(series, " ", "", -1)
+	s = strings.Replace(s, "\n", "", -1)
+	s = strings.Replace(s, "\t", "", -1)
+	s = strings.Replace(s, " ", "", -1)
 
-	// cat series to array
-	arr := strings.Split(series, "")
+	// cat s to array
+	arr := strings.Split(s, "")
 	fmt.Println(arr)
 	fmt.Println(len(arr))
 
