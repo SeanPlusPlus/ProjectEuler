@@ -56,9 +56,9 @@ func main() {
 	// value overwritten when we encounter a new highest product
 	// product := 0
 
-	// stores the highest element of array we are inspecting
+	// stores the highest index of array we are inspecting
 	// increments until value greater than 1000 (end of array)
-	// element := 3
+	// idx := 3
 
 	// stores array of nums in series that generated highest product
 	// all elements overwritten when we encounter a new highest product
