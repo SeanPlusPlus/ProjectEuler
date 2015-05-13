@@ -61,7 +61,7 @@ func main() {
 	// var series := make([]int, 4)
 
 	// stores the highest element of array we are inspecting
-	// increments until value greater thatn 1000 (end of array)
+	// increments until value greater than 1000 (end of array)
 	// starts at 3 and contains the series [0, 1, 2, 3]
 	// element := 3
 }
