@@ -52,4 +52,16 @@ func main() {
 	fmt.Println(arr)
 	fmt.Println(len(arr))
 
+	// stores the highest product
+	// value overwritten when we encounter a new highest product
+	// product := 0
+
+	// stores array of nums in series that generated highest product
+	// all elements overwritten when we encounter a new highest product
+	// var series := make([]int, 4)
+
+	// stores the highest element of array we are inspecting
+	// increments until value greater thatn 1000 (end of array)
+	// starts at 3 and contains the series [0, 1, 2, 3]
+	// element := 3
 }
