@@ -18,11 +18,20 @@ func isPrime(num int) bool {
 			return false
 		}
 	}
+	return false
 }
 
 func main() {
-	for i := 2; i <= 12; i++ {
-		fmt.Println(i)
-		fmt.Println(isPrime(i))
+	var primes []int
+	i := 2
+	for {
+		if isPrime(i) {
+			primes = append(primes, i)
+		}
+		if len(primes) == 10001 {
+			break
+		}
+		i += 1
 	}
+	fmt.Println(primes[len(primes)-1])
 }
