@@ -2,39 +2,27 @@ package main
 
 import "fmt"
 
-// https://projecteuler.net/problem=6
+// https://projecteuler.net/problem=7
 //
-// The sum of the squares of the first ten natural numbers is,
+// By listing the first six prime numbers:
+// 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
 //
-// 12 + 22 + ... + 102 = 385
-// The square of the sum of the first ten natural numbers is,
-//
-// (1 + 2 + ... + 10)2 = 552 = 3025
-// Hence the difference between the sum of the squares of the first ten
-// natural numbers and the square of the sum is 3025 − 385 = 2640.
-//
-// Find the difference between the sum of the squares of the first
-// one hundred natural numbers and the square of the sum.
+// What is the 10 001st prime number?
 
-func sumOfSquares(num int) int {
-	sum := 0
-	for i := 1; i <= num; i++ {
-		sum += i
+func isPrime(num int) bool {
+	for i := 2; i <= num; i++ {
+		if i == num {
+			return true
+		}
+		if num%i == 0 {
+			return false
+		}
 	}
-	return sum * sum
-}
-
-func squareOfSums(num int) int {
-	sum := 0
-	for i := 1; i <= num; i++ {
-		sum += (i * i)
-	}
-	return sum
 }
 
 func main() {
-	num := 100
-	fmt.Println(sumOfSquares(num))
-	fmt.Println(squareOfSums(num))
-	fmt.Println(sumOfSquares(num) - squareOfSums(num))
+	for i := 2; i <= 12; i++ {
+		fmt.Println(i)
+		fmt.Println(isPrime(i))
+	}
 }
