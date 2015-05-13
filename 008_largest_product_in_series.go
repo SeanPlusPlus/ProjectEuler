@@ -56,12 +56,15 @@ func main() {
 	// value overwritten when we encounter a new highest product
 	// product := 0
 
+	// stores the highest element of array we are inspecting
+	// increments until value greater than 1000 (end of array)
+	// element := 3
+
 	// stores array of nums in series that generated highest product
 	// all elements overwritten when we encounter a new highest product
 	// var series := make([]int, 4)
-
-	// stores the highest element of array we are inspecting
-	// increments until value greater than 1000 (end of array)
-	// starts at 3 and contains the series [0, 1, 2, 3]
-	// element := 3
+	// series[0] = 7
+	// series[1] = 3
+	// series[2] = 1
+	// series[3] = 6
 }
