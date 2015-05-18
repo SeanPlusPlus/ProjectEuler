@@ -17,7 +17,7 @@ import (
 // Find the thirteen adjacent digits in the 1000-digit number that have
 // the greatest product. What is the value of this product?
 
-func main() {
+func numAsString() string {
 
 	// save s to string
 	s :=
@@ -46,8 +46,13 @@ func main() {
 	s = strings.Replace(s, "\n", "", -1)
 	s = strings.Replace(s, "\t", "", -1)
 	s = strings.Replace(s, " ", "", -1)
+	return s
+}
+
+func main() {
 
 	// cat s to array
+	s := numAsString()
 	arr := strings.Split(s, "")
 	fmt.Println(arr)
 	fmt.Println(len(arr))
