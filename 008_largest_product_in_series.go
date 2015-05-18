@@ -51,9 +51,9 @@ func numAsString() string {
 
 func main() {
 
-	// cat s to array
-	s := numAsString()
-	arr := strings.Split(s, "")
+	num := make(chan string)
+	go func() { num <- numAsString }()
+	arr := strings.Split(num, "")
 	fmt.Println(arr)
 	fmt.Println(len(arr))
 
