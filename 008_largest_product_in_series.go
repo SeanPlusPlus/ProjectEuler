@@ -52,12 +52,10 @@ func numAsString() string {
 func main() {
 
 	numbers := make(chan string)
-	go func() {
-		numbers <- numAsString()
-	}()
-
+	go func() { numbers <- numAsString() }()
 	str := <-numbers
 	arr := strings.Split(str, "")
+
 	fmt.Println(arr)
 	fmt.Println(len(arr))
 
