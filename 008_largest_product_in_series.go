@@ -51,13 +51,13 @@ func numAsString() string {
 
 func main() {
 
-	num := make(chan string)
+	numbers := make(chan string)
 	go func() {
-		num <- numAsString()
+		numbers <- numAsString()
 	}()
 
-	s := <-num
-	arr := strings.Split(s, "")
+	str := <-numbers
+	arr := strings.Split(str, "")
 	fmt.Println(arr)
 	fmt.Println(len(arr))
 
