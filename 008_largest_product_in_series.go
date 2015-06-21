@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strconv"
 	"strings"
 )
 
@@ -51,27 +53,40 @@ func numAsString() string {
 
 func main() {
 
+	// get the numbers and build array
 	numbers := make(chan string)
 	go func() { numbers <- numAsString() }()
 	str := <-numbers
 	arr := strings.Split(str, "")
 
-	fmt.Println(arr)
-	fmt.Println(len(arr))
+	// init variables to solver our problem
+	highest_product := 0
+	series_length := 13
+	end_idx := (len(arr) - (series_length - 1))
 
-	// stores the highest product
-	// value overwritten when we encounter a new highest product
-	// product := 0
+	for start_idx := 0; start_idx < end_idx; start_idx++ {
+		p := 1
+		var nums []string
 
-	// stores the highest index of array we are inspecting
-	// increments until value greater than 1000 (end of array)
-	// idx := 3
+		// build array of nums
+		for i := 0; i <= (series_length - 1); i++ {
+			num := arr[start_idx+i]
+			nums = append(nums, num)
 
-	// stores array of nums in series that generated highest product
-	// all elements overwritten when we encounter a new highest product
-	// var series := make([]int, 4)
-	// series[0] = 7
-	// series[1] = 3
-	// series[2] = 1
-	// series[3] = 6
+			// cast num to int and build product
+			number, err := strconv.Atoi(num)
+			if err != nil {
+				fmt.Println(err)
+				os.Exit(2)
+			}
+			p *= number
+		}
+
+		// check if this product is now champion
+		if p > highest_product {
+			highest_product = p
+			fmt.Println(p)
+			fmt.Println(nums)
+		}
+	}
 }
