@@ -13,14 +13,11 @@ import "fmt"
 // Find the product abc.
 
 func main() {
-
 	N := 1000
 	for x := 3; x <= N; x++ {
 		y := x + 1
 		z := y + 1
-
 		for z <= N {
-
 			for z*z < x*x+y*y {
 				z = z + 1
 			}
