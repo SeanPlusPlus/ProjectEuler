@@ -14,37 +14,27 @@ import "fmt"
 
 func main() {
 
-	a := 3
-	b := 4
-	c := 5
+	N := 1000
+	for x := 3; x <= N; x++ {
+		y := x + 1
+		z := y + 1
 
-	multiplier := 1
+		for z <= N {
 
-	for {
-		x := a * multiplier
-		y := b * multiplier
-		z := c * multiplier
-		multiplier = (multiplier + 1)
-
-		//a_sq := x * x
-		//b_sq := y * y
-		//c_sq := z * z
-
-		//fmt.Println(a_sq)
-		//fmt.Println(b_sq)
-		//fmt.Println(c_sq)
-
-		fmt.Println(x)
-		fmt.Println(y)
-		fmt.Println(z)
-
-		sum := x + y + z
-		fmt.Println(sum)
-		fmt.Printf("\n")
-
-		if sum >= 1000 {
-			return
+			for z*z < x*x+y*y {
+				z = z + 1
+			}
+			if z*z == x*x+y*y {
+				fmt.Println(x)
+				fmt.Println(y)
+				fmt.Println(z)
+				fmt.Println(x * y * z)
+				fmt.Println("\n")
+				if x+y+z == 1000 {
+					return
+				}
+			}
+			y = y + 1
 		}
-
 	}
 }
