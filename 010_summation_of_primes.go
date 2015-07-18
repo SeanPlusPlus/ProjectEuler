@@ -28,18 +28,21 @@ func Filter(in <-chan int, out chan<- int, prime int) {
 
 // The prime sieve: Daisy-chain Filter processes.
 func main() {
+	ceiling := 10
 	ch := make(chan int) // Create a new channel.
 	go Generate(ch)      // Launch Generate goroutine.
-	i := 0
+	sum := 0
 	for {
 		prime := <-ch
-		fmt.Println(prime)
-		if prime > 30 {
-			return
+
+		if prime > ceiling {
+			fmt.Println(sum)
+			break
 		}
+
+		sum += prime
 		ch1 := make(chan int)
 		go Filter(ch, ch1, prime)
 		ch = ch1
-		i += 1
 	}
 }
