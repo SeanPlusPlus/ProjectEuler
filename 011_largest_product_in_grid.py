@@ -37,7 +37,7 @@ def strAsGrid():
 
     li = []
     for row in s.split('         '):
-        li.append(row.split(' '))
+        li.append([int(num) for num in row.split(' ')])
     return li
 
 def main():
