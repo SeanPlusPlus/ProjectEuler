@@ -60,19 +60,23 @@ def main():
 
     greatest = 0 # stores the greatest product
     grid = strAsGrid()
-    idx = 0
     els = 4
     end = 20
-    li = grid[0]
-    while (idx + els) <= end:
-        #print li[idx]
-        nums = []
-        for el in range(els):
-            i = el + idx
-            nums.append(li[i])
-        print nums
-        print prod(nums)
-        idx += 1
+    for li in grid:
+        idx = 0
+        while (idx + els) <= end:
+            nums = []
+            for el in range(els):
+                i = el + idx
+                nums.append(li[i])
+            print nums
+            product = prod(nums)
+            print product
+            if product > greatest:
+                greatest = product
+            idx += 1
+    print "* greatest *"
+    print greatest
 
 
 ###############################################################################
