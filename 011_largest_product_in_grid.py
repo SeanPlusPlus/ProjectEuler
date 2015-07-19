@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import operator
+
+# https://projecteuler.net/problem=11
+
 # In the 20×20 grid below, four numbers along a diagonal line have been marked in red.
 
 # 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
@@ -12,7 +16,16 @@
 # What is the greatest product of four adjacent numbers in the same direction 
 # (up, down, left, right, or diagonally) in the 20×20 grid?
 
+###############################################################################
+def prod(iterable):
+###############################################################################
+
+    return reduce(operator.mul, iterable, 1)
+
+
+###############################################################################
 def strAsGrid():
+###############################################################################
 
     s = "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08\
          49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00\
@@ -40,11 +53,29 @@ def strAsGrid():
         li.append([int(num) for num in row.split(' ')])
     return li
 
+
+###############################################################################
 def main():
+###############################################################################
 
+    greatest = 0 # stores the greatest product
     grid = strAsGrid()
-    for row in grid:
-        print row
+    idx = 0
+    els = 4
+    end = 20
+    li = grid[0]
+    while (idx + els) <= end:
+        #print li[idx]
+        nums = []
+        for el in range(els):
+            i = el + idx
+            nums.append(li[i])
+        print nums
+        print prod(nums)
+        idx += 1
 
+
+###############################################################################
 if __name__ == '__main__':
     main()
+###############################################################################
