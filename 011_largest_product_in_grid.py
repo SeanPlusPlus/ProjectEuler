@@ -51,6 +51,12 @@ def strAsGrid():
     li = []
     for row in s.split('         '):
         li.append([int(num) for num in row.split(' ')])
+    col = 0
+    for el in li:
+        if col == 20:
+            break
+        print el[col] # this is the vertical value
+        col += 1
     return li
 
 
@@ -60,23 +66,25 @@ def main():
 
     greatest = 0 # stores the greatest product
     grid = strAsGrid()
-    els = 4
-    end = 20
-    for li in grid:
-        idx = 0
-        while (idx + els) <= end:
-            nums = []
-            for el in range(els):
-                i = el + idx
-                nums.append(li[i])
-            print nums
-            product = prod(nums)
-            print product
-            if product > greatest:
-                greatest = product
-            idx += 1
-    print "* greatest *"
-    print greatest
+    print grid
+    #els = 4
+    #end = 20
+    #for li in grid:
+        #idx = 0
+        #while (idx + els) <= end:
+            #nums = []
+            #for el in range(els):
+                #i = el + idx
+                #nums.append(li[i])
+            #product = prod(nums)
+            #print nums
+            #print product
+            #if product > greatest:
+                #greatest = product
+            #idx += 1
+
+    #print "* greatest *"
+    #print greatest
 
 
 ###############################################################################
