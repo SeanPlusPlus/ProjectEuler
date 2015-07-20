@@ -68,11 +68,10 @@ def main():
 
     greatest = 0 # stores the greatest product
     grid = strAsGrid()
-    print grid
     els = 4
-    end = 20
     for li in grid:
         idx = 0
+        end = len(li)
         while (idx + els) <= end: # refactor this so that there is no codified end
             nums = []
             for el in range(els):
@@ -87,6 +86,7 @@ def main():
 
     print "* greatest *"
     print greatest
+    print grid
 
 
 ###############################################################################
