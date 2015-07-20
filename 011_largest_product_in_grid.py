@@ -48,16 +48,18 @@ def strAsGrid():
          20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54\
          01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"
 
-    li = []
+    rows = []
     for row in s.split('         '):
-        li.append([int(num) for num in row.split(' ')])
-    col = 0
-    for el in li:
-        if col == 20:
-            break
-        print el[col] # this is the vertical value
-        col += 1
-    return li
+        rows.append([int(num) for num in row.split(' ')])
+
+    cols = []
+    for col in range(20):
+        li = []
+        for row in rows:
+            li.append(row[col]) 
+        cols.append(li)
+
+    return rows + cols
 
 
 ###############################################################################
@@ -71,7 +73,7 @@ def main():
     #end = 20
     #for li in grid:
         #idx = 0
-        #while (idx + els) <= end:
+        #while (idx + els) <= end: # refactor this so that there is no codified end
             #nums = []
             #for el in range(els):
                 #i = el + idx
