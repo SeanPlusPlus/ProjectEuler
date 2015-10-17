@@ -72,7 +72,7 @@ def main():
     for li in grid:
         idx = 0
         end = len(li)
-        while (idx + els) <= end: # refactor this so that there is no codified end
+        while (idx + els) <= end: 
             nums = []
             for el in range(els):
                 i = el + idx
@@ -87,7 +87,18 @@ def main():
     print "* greatest *"
     print greatest
     print grid
+    print '*'
 
+    row = 0
+    col = 0
+    for col, el in enumerate(range(17)):
+        row = 0
+        for l in range(els):
+            print grid[row][col]
+            row += 1 
+            col += 1 
+
+        print '*'
 
 ###############################################################################
 if __name__ == '__main__':
