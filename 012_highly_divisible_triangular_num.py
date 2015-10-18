@@ -44,7 +44,7 @@ def main():
             tri += (x + 1)
         print tri
         print '*'
-        if len(factors(tri)) > 5:
+        if len(factors(tri)) > 500:
             return
         i += 1
 
