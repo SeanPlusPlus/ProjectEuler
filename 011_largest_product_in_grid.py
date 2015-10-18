@@ -66,6 +66,7 @@ def strAsGrid():
 def main():
 ###############################################################################
 
+    li_greatest = []
     greatest = 0 # stores the greatest product
     grid = strAsGrid()
     els = 4
@@ -78,10 +79,9 @@ def main():
                 i = el + idx
                 nums.append(li[i])
             product = prod(nums)
-            #print nums
-            #print product
             if product > greatest:
                 greatest = product
+                li_greatest = nums
             idx += 1
 
     max_diaganol = 17
@@ -90,19 +90,34 @@ def main():
             row = r
             nums = []
             for el in range(els):
-                print grid[row][col]
+                num = grid[row][col]
+                nums.append(num)
                 row += 1 
                 col += 1
-                nums.append(li[i])
             product = prod(nums)
             if product > greatest:
+                li_greatest = nums
                 greatest = product
-                
-            print '*'
 
-    print "* greatest *"
+    for r in range(max_diaganol):
+        for col in range(max_diaganol):
+            row = r
+            nums = []
+            col += 3
+            for el in range(els):
+                num = grid[row][col]
+                print num
+                nums.append(num)
+                row += 1 
+                col -= 1
+            product = prod(nums)
+            if product > greatest:
+                li_greatest = nums
+                greatest = product
+
+    print "greatest:"
     print greatest
-    print '*'
+    print li_greatest
 
 
 
