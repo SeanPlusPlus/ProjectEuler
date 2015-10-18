@@ -78,27 +78,33 @@ def main():
                 i = el + idx
                 nums.append(li[i])
             product = prod(nums)
-            print nums
-            print product
+            #print nums
+            #print product
             if product > greatest:
                 greatest = product
             idx += 1
 
+    max_diaganol = 17
+    for r in range(max_diaganol):
+        for col in range(max_diaganol):
+            row = r
+            nums = []
+            for el in range(els):
+                print grid[row][col]
+                row += 1 
+                col += 1
+                nums.append(li[i])
+            product = prod(nums)
+            if product > greatest:
+                greatest = product
+                
+            print '*'
+
     print "* greatest *"
     print greatest
-    print grid
     print '*'
 
-    row = 0
-    col = 0
-    for col, el in enumerate(range(17)):
-        row = 0
-        for l in range(els):
-            print grid[row][col]
-            row += 1 
-            col += 1 
 
-        print '*'
 
 ###############################################################################
 if __name__ == '__main__':
