@@ -44,9 +44,6 @@ def main():
     for num in range(1, 1000000):
         chain_length = collatz(num, 1)
         if chain_length > longest_chain:
-            print num
-            print chain_length
-            print ''
             longest_chain = chain_length
             starting_number = num
 
