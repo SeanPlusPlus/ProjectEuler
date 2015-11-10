@@ -39,8 +39,18 @@ def collatz(n, length):
 def main():
 ###############################################################################
 
-    chain_length = collatz(13, 1)
-    print chain_length
+    starting_number = None
+    longest_chain = 0
+    for num in range(1, 1000000):
+        chain_length = collatz(num, 1)
+        if chain_length > longest_chain:
+            print num
+            print chain_length
+            print ''
+            longest_chain = chain_length
+            starting_number = num
+
+    print starting_number
 
 ###############################################################################
 if __name__ == '__main__':
