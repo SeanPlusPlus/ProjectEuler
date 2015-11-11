@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import inflect
+
 # https://projecteuler.net/problem=17
 
 ###############################################################################
@@ -17,23 +19,17 @@
 #
 ###############################################################################
 
-def numToWord(num):
-    numbers = [
-        "zero",
-        "one",
-        "two",
-        "three",
-        "four",
-        "five",
-        "six",
-        "seven",
-        "eight",
-        "nine"
-    ]
-    return numbers[num]
 
 def main():
-    print numToWord(5)
+
+    p = inflect.engine()
+
+    letter_count = 0
+    for num in range(1,1001):
+        string = p.number_to_words(num)
+        letter_count += len(''.join(e for e in string if e.isalnum()))
+
+    print letter_count
 
 if __name__ == '__main__':
     main()
