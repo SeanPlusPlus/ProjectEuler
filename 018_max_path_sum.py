@@ -35,12 +35,24 @@
 
 #NOTE: As there are only 16384 routes, it is possible to solve this problem by trying every route. However, Problem 67, is the same challenge with a triangle containing one-hundred rows; it cannot be solved by brute force, and requires a clever method! ;o)
 #
+
+# Full disclosure:
+# http://stackoverflow.com/questions/8002252/euler-project-18-approach
+# http://stackoverflow.com/questions/529424/traverse-a-list-in-reverse-order-in-python
 ###############################################################################
+
+def path_sum(li):
+    print li[-1]
+    try:
+        print li[-2]
+    except IndexError:
+        return li
+    return li
 
 
 def main():
 
-    li = [
+    li_big = [
         [75],
         [95, 64],
         [17, 47, 82],
@@ -58,9 +70,14 @@ def main():
         [04, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60, 04, 23]
     ]
 
-    for el in li:
-        print el
+    li_small = [
+        [3],
+        [7, 4],
+        [2, 4, 6],
+        [8, 5, 9, 3]
+    ]
 
+    print path_sum(li_small)
 
 if __name__ == '__main__':
     main()
