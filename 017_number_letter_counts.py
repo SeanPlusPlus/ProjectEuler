@@ -17,13 +17,23 @@
 #
 ###############################################################################
 
+def numToWord(num):
+    numbers = [
+        "zero",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine"
+    ]
+    return numbers[num]
+
 def main():
-
-    string = "three hundred and forty-two"
-    print len(''.join(e for e in string if e.isalnum()))
-
-    string = "one hundred and fifteen"
-    print len(''.join(e for e in string if e.isalnum()))
+    print numToWord(5)
 
 if __name__ == '__main__':
     main()
