@@ -38,17 +38,17 @@
 
 # Full disclosure:
 # http://stackoverflow.com/questions/8002252/euler-project-18-approach
-# http://stackoverflow.com/questions/529424/traverse-a-list-in-reverse-order-in-python
 ###############################################################################
 
 def path_sum(li):
-    print li[-1]
     try:
-        print li[-2]
+        new_base = []
+        for idx, el in enumerate(li[-2]):
+            new_base.append(el + max(li[-1][idx], li[-1][idx+1]))
+        li[-2] = new_base
     except IndexError:
-        return li
-    return li
-
+        return li[0][0]
+    return path_sum(li[:-1])
 
 def main():
 
@@ -77,7 +77,7 @@ def main():
         [8, 5, 9, 3]
     ]
 
-    print path_sum(li_small)
+    print path_sum(li_big)
 
 if __name__ == '__main__':
     main()
