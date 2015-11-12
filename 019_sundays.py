@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import calendar
+
 # https://projecteuler.net/problem=19
 
 ###############################################################################
@@ -21,8 +23,15 @@
 
 def main():
 
+    sundays_on_first_of_month = 0
 
-    print 'ugh'
+    sunday = 6 # it is the last day of the week, with zero indexing
+    for year in range(1901,2001):
+        for month in range(1,13):
+            if calendar.datetime.date(year,month,1).weekday() == sunday:
+                sundays_on_first_of_month += 1
+
+    print sundays_on_first_of_month
 
 if __name__ == '__main__':
     main()
