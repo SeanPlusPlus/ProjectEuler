@@ -13,7 +13,7 @@ def cycles(n, d, start=0, steps=0):
     if d % 3 == 0: # d can not be multiple of 3
         return steps
 
-    if d % 5 == 0: # d can not be multiple of 3
+    if d % 5 == 0: # d can not be multiple of 5
         return steps
 
     steps += 1
