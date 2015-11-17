@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import math
 from itertools import cycle
 
 # https://projecteuler.net/problem=28
@@ -40,10 +41,33 @@ def gen_points(end):
 
         times_to_move+=1
 
-def main():
-    li = list(gen_points(9))
+def get_diaganol(li, idx_x, idx_y, direction):
+    idx = 1
+    res = []
     for el in li:
-        print el
+        x = el[1][0]
+        y = el[1][1]
+        if x == (idx * idx_x) and y == (idx * idx_y):
+            res.append(el[0])
+            idx += 1
+    print direction, res
+    return res
+
+def main():
+    SIDE = 1001
+    SPIRAL = SIDE * SIDE
+    li = list(gen_points(SPIRAL))
+    res = []
+
+    north_east = get_diaganol(li,  1,  1, "ne")
+    south_east = get_diaganol(li, -1, -1, "se")
+    north_west = get_diaganol(li, -1,  1, "nw")
+    south_west = get_diaganol(li,  1, -1, "sw")
+
+    res = north_east + south_east + north_west + south_west
+    
+    print res
+    print sum(res) + 1
 
 
 if __name__ == '__main__':
