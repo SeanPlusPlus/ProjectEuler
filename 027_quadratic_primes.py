@@ -16,8 +16,8 @@ def get_prime_numbers():
                primes.append(num)
     return set(primes)
 
-# this is the series that walks through values of n, 
-# terminating each time n is not a prime number
+# this is the function that walks over values of n
+# terminating each time the result of n² + an + b isn't prime
 def prime_series(a, b, primes):
     for n in range(0,ITER):
         res = (n * n) + (a * n) + b
