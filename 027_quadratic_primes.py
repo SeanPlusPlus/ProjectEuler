@@ -8,6 +8,7 @@ import math
 
 ITER = 1001
 
+# b is prime, so let's generate this series now
 def get_prime_numbers():
     primes = []
     for num in range(3,ITER,2):
@@ -15,6 +16,7 @@ def get_prime_numbers():
                primes.append(num)
     return primes
 
+# test if the result of our operation is a prime number
 def is_prime(n):
     if n % 2 == 0 and n > 2: 
         return False
@@ -23,18 +25,18 @@ def is_prime(n):
     except ValueError:
         return False
 
+# this is the series that walks through values of n, 
+# terminating each time n is not a prime number
 def prime_series(a,b):
-
     for n in range(0,ITER):
         res = (n * n) + (a * n) + b
         prime = is_prime(res)
-        print "n", n, "prime", prime, "res", res
+        #print "n", n, "prime", prime, "res", res
         if not prime:
             return n 
     return n
 
 def main():
-
     primes = get_prime_numbers()
     longest_consecutive = 0
     coefficients = []
@@ -46,23 +48,26 @@ def main():
             # b is prime
             for b in primes:
 
+                # a nd b are positive
                 consecutive = prime_series(a, b)
                 if consecutive > longest_consecutive:
                     longest_consecutive = consecutive
                     coefficients = a, b
-                print "a", "b", a, b, "consecutive", consecutive, "\n"
+                    print "a", "b", a, b, "consecutive", consecutive, "\n"
 
+                # a is negative and b is positive 
                 consecutive = prime_series(-a, b)
                 if consecutive > longest_consecutive:
                     longest_consecutive = consecutive
                     coefficients = -a, b
-                print "-a", "b", -a, b, "consecutive", consecutive, "\n"
+                    print "-a", "b", -a, b, "consecutive", consecutive, "\n"
 
+                # b is negative and a is positive
                 consecutive = prime_series(a, -b)
                 if consecutive > longest_consecutive:
                     longest_consecutive = consecutive
                     coefficients = a, -b
-                print "a", "-b", a, -b, "consecutive", consecutive, "\n"
+                    print "a", "-b", a, -b, "consecutive", consecutive, "\n"
 
     print "longest consecutive", longest_consecutive
     print "coefficients", coefficients
