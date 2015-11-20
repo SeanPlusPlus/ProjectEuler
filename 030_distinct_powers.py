@@ -3,7 +3,7 @@
 
 import time
 
-# https://projecteuler.net/problem=29
+# https://projecteuler.net/problem=30
 
 def main():
     ITER = 1000000

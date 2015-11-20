@@ -10,8 +10,8 @@ def main():
     ITER = 101
     s = set()
     with localcontext(Context(prec=201)) as ctx:
-        for n in range(2,ITER):
-            for exp in range(2,ITER):
+        for n in xrange(2,ITER):
+            for exp in xrange(2,ITER):
                 x = ctx.power(n,exp)
                 print x
                 s.add(x)
