@@ -16,12 +16,9 @@ def main():
     for number in pairs:
         multipliers = it.permutations(digits,number[0])
         for multiplier in multipliers:
-
-            # get 2 digit permutations of the remaining digits 
             li = list(digits - set(multiplier))
             multiplicands = it.permutations(li,number[1])
             for multiplicand in multiplicands:
-
                 a = int(''.join(multiplier))
                 b = int(''.join(multiplicand))
                 product = a * b
