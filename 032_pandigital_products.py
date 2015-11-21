@@ -36,6 +36,6 @@ def main():
 if __name__ == '__main__':
     start_time = time.time()
     main()
-    #print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
+    print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
 
     # 0 seconds
