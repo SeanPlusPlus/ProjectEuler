@@ -23,8 +23,6 @@ def main():
                 common_digit = list(set(n_as_li).intersection(set(d_as_li)))[0]
                 product_both = float(n) / float(d)
 
-                #print n_as_li, d_as_li, common_digit, product_both
-
                 n_as_li.remove(common_digit)
                 n_single_digit = n_as_li[0]
 
@@ -37,7 +35,8 @@ def main():
                     if product_single == product_both:
                         ans.append([n, d])
 
-    print ans
+    for a in ans:
+        print a
 
 
 
