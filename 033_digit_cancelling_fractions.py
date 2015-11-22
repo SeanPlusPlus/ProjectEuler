@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from operator import mul
 import time
 
 # https://projecteuler.net/problem=33
@@ -35,8 +36,13 @@ def main():
                     if product_single == product_both:
                         ans.append([n, d])
 
+    li = []
     for a in ans:
-        print a
+        print a[0], a[1]
+        li.append(float(a[0]) / float(a[1]))
+
+    print li
+    print reduce(mul, li)
 
 
 
