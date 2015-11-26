@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import time
+
 # https://projecteuler.net/problem=34
 
 def factorial(n):
@@ -38,8 +40,8 @@ def main():
     print "ans: ", ans
 
 if __name__ == '__main__':
-    #start_time = time.time()
+    start_time = time.time()
     main()
-    #print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
+    print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
 
     # 0.00 seconds
