@@ -5,7 +5,8 @@ import time
 import math
 
 # https://projecteuler.net/problem=37
-# you could just look here and sum, but that feels like cheating
+# you could just look here and sum, but that feels like cheating:
+# https://oeis.org/search\?q\=id:A020994\&fmt\=json
 
 def is_prime(n):
     if n == 1:
