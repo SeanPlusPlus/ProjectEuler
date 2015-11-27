@@ -13,7 +13,7 @@ def trim_str(s, direction="left"):
         trimmed = s[:-1]
     if len(trimmed) == 0:
         return
-    return trim_left(trimmed)
+    return trim_str(trimmed, direction)
 
 def main():
     s = "3797"
