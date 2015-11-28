@@ -6,9 +6,10 @@ import time
 # https://projecteuler.net/problem=38
 
 def concatenated_product(products):
+    s = ''.join([str(e) for e in products])
     return {
-        "sorted": ''.join(sorted( ''.join([str(e) for e in products]) )),
-        "raw": int(''.join([str(e) for e in products]))
+        "sorted": ''.join(sorted( s )),
+        "raw": int(s)
     }
 
 def main():
