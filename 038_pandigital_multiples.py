@@ -21,13 +21,12 @@ def main():
         for s in sequences:
             products  = []
             for i in range(1, s):
-                product = i * target
-                products.append(product)
-            concatenated = concatenated_product(products) 
-            if concatenated["sorted"] == pan_digits_sorted:
-                print "taget:", target, "range bound:", s, "product:", concatenated["raw"]
-                if concatenated["raw"] > greatest:
-                    greatest = concatenated["raw"]
+                products.append(i * target)
+            product = concatenated_product(products) 
+            if product["sorted"] == pan_digits_sorted:
+                print "taget:", target, "range bound:", s, "product:", product["raw"]
+                if product["raw"] > greatest:
+                    greatest = product["raw"]
 
     print "greatest:", greatest
 
