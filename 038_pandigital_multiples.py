@@ -25,7 +25,7 @@ def main():
                 products.append(product)
             concatenated = concatenated_product(products) 
             if concatenated['sorted'] == pan_digits_sorted:
-                print target, s, concatenated
+                print "taget", target, "range bound", s, "product", concatenated['raw']
                 if concatenated['raw'] > greatest:
                     greatest = concatenated['raw']
 
