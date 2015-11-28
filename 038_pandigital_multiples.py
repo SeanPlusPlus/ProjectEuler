@@ -16,7 +16,7 @@ def main():
     pan_digits_sorted = ''.join([str(e) for e in range(1,10)])
     greatest = 0
     targets = range(1,10001)
-    for idx, target in enumerate(targets):
+    for target in targets:
         sequences = range(2,11)
         for s in sequences:
             products  = []
