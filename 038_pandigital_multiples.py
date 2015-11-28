@@ -13,21 +13,23 @@ def concatenated_product(products):
     }
 
 def main():
-    digits = ''.join([str(e) for e in range(1,10)])
-
-    targets   = [192,9]
-    sequences = [
-        {'start': 1,'end': 4},
-        {'start': 1,'end': 6}
-    ]
+    pan_digits_sorted = ''.join([str(e) for e in range(1,10)])
+    greatest = 0
+    targets = range(1,10001)
     for idx, target in enumerate(targets):
-        products  = []
-        for i in range(sequences[idx]['start'], sequences[idx]['end']):
-            product = i * target
-            products.append(product)
-        concatenated = concatenated_product(products) 
-        if concatenated['sorted'] == digits:
-            print target, concatenated
+        sequences = range(2,11)
+        for s in sequences:
+            products  = []
+            for i in range(1, s):
+                product = i * target
+                products.append(product)
+            concatenated = concatenated_product(products) 
+            if concatenated['sorted'] == pan_digits_sorted:
+                print target, concatenated
+                if concatenated['raw'] > greatest:
+                    greatest = concatenated['raw']
+
+    print "greatest:", greatest
 
 if __name__ == '__main__':
     start_time = time.time()
