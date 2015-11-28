@@ -15,25 +15,19 @@ def concatenated_product(products):
 def main():
     digits = ''.join([str(e) for e in range(1,10)])
 
-    products = []
-    target = 192
-    r = [1,4]
-    for i in range(r[0],r[1]):
-        product = i * target
-        products.append(product)
-    concatenated = concatenated_product(products) 
-    if concatenated['sorted'] == digits:
-        print target, concatenated
-
-    products = []
-    target = 9
-    r = [1,6]
-    for i in range(r[0],r[1]):
-        product = i * target
-        products.append(product)
-    concatenated = concatenated_product(products) 
-    if concatenated['sorted'] == digits:
-        print target, concatenated
+    targets   = [192,9]
+    sequences = [
+        {'start': 1,'end': 4},
+        {'start': 1,'end': 6}
+    ]
+    for idx, target in enumerate(targets):
+        products  = []
+        for i in range(sequences[idx]['start'], sequences[idx]['end']):
+            product = i * target
+            products.append(product)
+        concatenated = concatenated_product(products) 
+        if concatenated['sorted'] == digits:
+            print target, concatenated
 
 if __name__ == '__main__':
     start_time = time.time()
