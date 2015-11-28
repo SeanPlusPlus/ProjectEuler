@@ -6,21 +6,37 @@ import time
 # https://projecteuler.net/problem=38
 
 def concatenated_product(products):
-    return ''.join(sorted( ''.join([str(e) for e in products]) ))
+    return {
+        "sorted": ''.join(sorted( ''.join([str(e) for e in products]) )),
+        "raw": int(''.join([str(e) for e in products]))
+    }
 
 def main():
     digits = ''.join([str(e) for e in range(1,10)])
+
     products = []
-    for n in range(1,4):
-        product = n * 192
+    target = 192
+    r = [1,4]
+    for i in range(r[0],r[1]):
+        product = i * target
         products.append(product)
-    concatenated = concatenated_product(products)
-    if concatenated == digits:
-        print concatenated, digits
+    concatenated = concatenated_product(products) 
+    if concatenated['sorted'] == digits:
+        print target, concatenated
+
+    products = []
+    target = 9
+    r = [1,6]
+    for i in range(r[0],r[1]):
+        product = i * target
+        products.append(product)
+    concatenated = concatenated_product(products) 
+    if concatenated['sorted'] == digits:
+        print target, concatenated
 
 if __name__ == '__main__':
     start_time = time.time()
     main()
     print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
 
-    # 692.47 seconds
+    # 0 seconds
