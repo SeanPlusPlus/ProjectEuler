@@ -3,7 +3,7 @@
 
 import time
 
-# https://projecteuler.net/problem=42
+# https://projecteuler.net/problem=41
 
 def primes_sieve2(limit):
     a = [True] * limit 
