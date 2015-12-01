@@ -29,4 +29,4 @@ if __name__ == "__main__":
     main()
     print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
 
-    # 0.64 seconds
+    # 0.37 seconds
