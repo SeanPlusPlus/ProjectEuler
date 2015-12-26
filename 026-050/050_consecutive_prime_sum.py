@@ -16,7 +16,9 @@ def get_primes(limit):
                 a[n] = False
 
 def main():
-    p = get_primes(1000 * 1000)
+    # limit = 1000 * 1000
+    limit = 100
+    p = get_primes(limit)
     while True:
         try:
             prime = p.next()
