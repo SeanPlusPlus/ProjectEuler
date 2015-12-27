@@ -6,7 +6,7 @@ import time, math, itertools
 # https://projecteuler.net/problem=48
 
 
-def get_primes(limit):
+def prime_sieve(limit):
     a = [True] * limit 
     a[0] = a[1] = False
     for (i, isprime) in enumerate(a):
@@ -15,16 +15,21 @@ def get_primes(limit):
             for n in xrange(i*i, limit, i):
                 a[n] = False
 
-def main():
-    # limit = 1000 * 1000
-    limit = 100
-    p = get_primes(limit)
+def get_primes(limit):
+    p = prime_sieve(limit)
+    primes = []
     while True:
         try:
             prime = p.next()
-            print prime
+            primes.append(prime)
         except StopIteration:
-            return
+            return primes
+
+def main():
+    # limit = 1000 * 1000
+    limit = 100
+    primes = get_primes(limit)
+    print primes
 
 if __name__ == "__main__":
     start_time = time.time()
