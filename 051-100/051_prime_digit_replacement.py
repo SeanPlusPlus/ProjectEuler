@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time, random
-import itertools as it
+import time
 from collections import Counter
 from primes import get_primes
 
 # https://projecteuler.net/problem=51
 # 6 digit prime with exactly 3 repeating digits
-
 
 def has_three_repeating_digits(s):
     indices = list(str(s))
@@ -19,12 +17,9 @@ def has_three_repeating_digits(s):
                 return k
     return False
 
-
 def main():
     limit = 1000000
     primes = [p for p in get_primes(limit) if p > 99999]
-    r = primes[random.randint(0,len(primes))]
-
     for p in primes:
         n = has_three_repeating_digits(p)
         if n:
@@ -35,12 +30,12 @@ def main():
                 i = int(s.replace(n,el))
                 if i in primes:
                     series.append(i)
-            print p, "n:" + n, li, s, series
             if len(series) == 8:
+                print p
                 return
-
 
 if __name__ == "__main__":
     start_time = time.time()
     main()
     print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
+    # 3.31 seconds
