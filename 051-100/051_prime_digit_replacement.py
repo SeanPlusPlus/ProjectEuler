@@ -8,10 +8,13 @@ from primes import get_primes
 
 
 def main():
-    limit = 1000
+    limit = 100000
     primes = get_primes(limit)
-    for p in primes:
-        print p
+    print primes[-1]
+
+    for n in xrange(1,10):
+        i = int(str(n) + "3") 
+        print i, (i in primes)
 
 if __name__ == "__main__":
     start_time = time.time()
