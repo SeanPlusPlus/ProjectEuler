@@ -52,7 +52,7 @@ def main():
             else:
                 player2.append(i)
 
-        target = "full_house"
+        target = "high_card"
 
         frequency = dict(Counter(player1))
         res = compute(frequency)
