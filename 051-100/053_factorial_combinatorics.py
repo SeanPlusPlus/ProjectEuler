@@ -4,6 +4,7 @@
 import time, math
 
 # https://projecteuler.net/problem=52
+
 def factorial(n):
     if n == 0:
         return 1
