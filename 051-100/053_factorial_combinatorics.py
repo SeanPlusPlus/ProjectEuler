@@ -11,8 +11,16 @@ def factorial(n):
         return n * factorial(n-1)
 
 def main():
-    i = 7
-    print factorial(i)
+    li = []
+    
+    for n in range(11,101):
+        for r in range(1,101):
+            if r < n:
+                i = factorial(n) / (factorial(r) * (factorial(n-r)))
+                if (i > (1000 * 1000)):
+                    li.append(i)
+
+    print len(li)
 
 if __name__ == "__main__":
     start_time = time.time()
