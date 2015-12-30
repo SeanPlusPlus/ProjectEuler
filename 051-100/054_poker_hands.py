@@ -96,44 +96,41 @@ def main():
             flush = True
         player2['flush'] = flush
 
-        # target = "trips"
 
-        frequency = dict(Counter(player1['cards']))
-        res1 = compute(frequency)
+        res1 = compute(dict(Counter(player1['cards'])))
         o1 = order.index(res1.get('val'))
+        if player1.get('flush') == True:
+            o1 = 5
 
-        frequency = dict(Counter(player2['cards']))
-        res2 = compute(frequency)
+        res2 = compute(dict(Counter(player2['cards'])))
         o2 = order.index(res2.get('val'))
-
-
-        if o2 > o1:
-            continue
+        if player2.get('flush') == True:
+            o2 = 5
 
         if o1 > o2:
             wins += 1
-
-        if o1 == o2:
-
-            # not correct order on computing flush
-            if player1['flush']:
-                if not player2['flush']:
-                    wins += 1
-
-            elif player2['flush']:
-                if not player1['flush']:
-                    continue
-
-            elif res1.get('card') > res2.get('card'):
-                wins += 1
-
-            elif res1.get('card') < res2.get('card'):
+            continue
+        elif o2 > o1:
+            continue
+        elif (res1.get('val') == 'high_card') and (res2.get('val') == 'high_card'):
+            if res1['card'] > res2['card']:
+                wins +=1 
                 continue
-
             else:
-                pass
+                continue
+        elif (res1.get('val') == 'pair') and (res2.get('val') == 'pair'):
+            if res1['card'] > res2['card']:
+                wins +=1 
+                continue
+            else:
+                continue
+        else:
+            print player1, res1, o1
+            print player2, res2, o2
+            print ""
 
     print "wins", wins
+
 
 if __name__ == "__main__":
     start_time = time.time()
