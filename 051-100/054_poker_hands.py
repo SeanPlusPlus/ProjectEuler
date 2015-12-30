@@ -42,21 +42,21 @@ def compute(hand):
     # pair / full_house
     if pair == 1:
         if not trips:
-            return {"pair_card": pair_card, "val": "pair"}
+            return {"card": pair_card, "val": "pair"}
         else:
             return {"pair_card": pair_card, "trips_card": trips_card, "val": "full_house"}
 
     # two_pair
     if pair == 2:
-        return {"pair_card": pair_card, "val": "two_pair"}
+        return {"val": "two_pair"}
 
     # trips
     if trips:
-        return {"trips_card": trips_card, "val": "trips"}
+        return {"card": trips_card, "val": "trips"}
 
     # fours
     if fours:
-        return {"fours_card": fours_card, "val": "fours"}
+        return {"card": fours_card, "val": "fours"}
 
     # straight 
     cards.sort()
@@ -68,6 +68,7 @@ def compute(hand):
     return {"val": "high_card", "card": max([k for k,v in hand.iteritems()])}
 
 def main():
+    wins = 0
     order = ["high_card", "pair", "two_pair", "trips", "straight", "flush", "full_house"]
     cards = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
     hands_list = get_hands()
@@ -98,14 +99,41 @@ def main():
         # target = "trips"
 
         frequency = dict(Counter(player1['cards']))
-        res = compute(frequency)
-        o = order.index(res.get('val'))
-        print player1, res, o
+        res1 = compute(frequency)
+        o1 = order.index(res1.get('val'))
 
         frequency = dict(Counter(player2['cards']))
-        res = compute(frequency)
-        o = order.index(res.get('val'))
-        print player2, res, o
+        res2 = compute(frequency)
+        o2 = order.index(res2.get('val'))
+
+
+        if o2 > o1:
+            continue
+
+        if o1 > o2:
+            wins += 1
+
+        if o1 == o2:
+
+            # not correct order on computing flush
+            if player1['flush']:
+                if not player2['flush']:
+                    wins += 1
+
+            elif player2['flush']:
+                if not player1['flush']:
+                    continue
+
+            elif res1.get('card') > res2.get('card'):
+                wins += 1
+
+            elif res1.get('card') < res2.get('card'):
+                continue
+
+            else:
+                pass
+
+    print "wins", wins
 
 if __name__ == "__main__":
     start_time = time.time()
