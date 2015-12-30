@@ -13,8 +13,9 @@ def get_hands():
     return li
 
 def main():
+    cards = ["2", "3", "4", "5", "6", "7", "8", "9", "1", "J", "Q", "K", "A"]
     hands = get_hands()
-    print hands
+    print hands[0]
 
 if __name__ == "__main__":
     start_time = time.time()
