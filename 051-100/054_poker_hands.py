@@ -68,6 +68,7 @@ def compute(hand):
     return {"val": "high_card", "card": max([k for k,v in hand.iteritems()])}
 
 def main():
+    order = ["high_card", "pair", "two_pair", "trips", "straight", "flush", "full_house"]
     cards = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
     hands_list = get_hands()
     li = hands_list
@@ -84,30 +85,27 @@ def main():
                 player2['cards'].append(i)
                 player2['flush'].append(s)
 
-        # flush
         flush = False
         if len(set(player1['flush'])) == 1:
             flush = True
         player1['flush'] = flush
 
         flush = False
-        if len(set(player2['flush'])) == 2:
+        if len(set(player2['flush'])) == 1:
             flush = True
         player2['flush'] = flush
 
-        high_card = "high_card"
+        # target = "trips"
 
         frequency = dict(Counter(player1['cards']))
         res = compute(frequency)
-        if res.get("val") == high_card: 
-            if player1['flush']:
-                print player1, res
+        o = order.index(res.get('val'))
+        print player1, res, o
 
         frequency = dict(Counter(player2['cards']))
         res = compute(frequency)
-        if res.get("val") == high_card: 
-            if player2['flush']:
-                print player2, res
+        o = order.index(res.get('val'))
+        print player2, res, o
 
 if __name__ == "__main__":
     start_time = time.time()
