@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 def prime_sieve(limit):
+    limit += 1
     a = [True] * limit 
     a[0] = a[1] = False
     for (i, isprime) in enumerate(a):

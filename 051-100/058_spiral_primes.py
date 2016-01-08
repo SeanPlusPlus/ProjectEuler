@@ -3,6 +3,7 @@
 
 import time 
 from itertools import cycle
+from primes import get_primes
 
 # https://projecteuler.net/problem=58
 
@@ -66,11 +67,10 @@ def main():
     south_west = get_diaganol(li, -1,  1)
     north_east = get_diaganol(li,  1, -1)
 
-    print north_west
-    print north_east
-
-    print south_west
-    print south_east
+    diags = [1] + north_west + north_east + south_west + south_east
+    primes = [p for p in get_primes(diags[-1])]
+    li = [i for i in diags if i in primes]
+    print li, float(len(li)) / float(len(diags))
 
 if __name__ == "__main__":
     start_time = time.time()
