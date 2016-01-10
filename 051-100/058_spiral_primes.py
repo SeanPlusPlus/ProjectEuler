@@ -7,21 +7,19 @@ from primes import get_primes
 # https://projecteuler.net/problem=58
 
 
-def northwest():
+def northwest(first, last, li=[]):
     li = []
     a = 1
-    for n in range(1, 7):
+    for n in range(first, last):
         a = a + (n * 2)
         li.append(a)
     return li
 
 
-def southeast():
-    li = []
+def southeast(first, last, multiplier=[4, 4], li=[]):
     a = 1
-    m = None
-    multiplier = [4, 4]
-    for n in range(1, 7):
+    m = 0
+    for n in range(first, last):
         try:
             m = multiplier.pop()
         except IndexError:
@@ -33,10 +31,28 @@ def southeast():
 
 
 def main():
-    primes = get_primes(10)
+    primes = get_primes(100)
     print primes
-    print northwest()
-    print southeast()
+    # first = 1
+    # last = 7
+    # top_right = northwest(first, last)
+    # bottom_left = southeast(first, last)
+    # nums = top_right + bottom_left
+    # print nums, len(top_right), len(bottom_left)
+    # p = len(set(primes).intersection(nums))
+    # n = len(nums) + 1
+    # print p, n
+    # print float(p) / float(n)
+    first = 1
+    last = 9
+    top_right = northwest(first, last)
+    bottom_left = southeast(first, last)
+    nums = top_right + bottom_left
+    print nums, len(top_right), len(bottom_left)
+    p = len(set(primes).intersection(nums))
+    n = len(nums) + 1
+    print p, n
+    print float(p) / float(n)
 
 
 if __name__ == "__main__":
