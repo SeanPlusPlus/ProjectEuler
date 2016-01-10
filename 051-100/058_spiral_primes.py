@@ -1,78 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time 
-from itertools import cycle
+import time
 from primes import get_primes
 
 # https://projecteuler.net/problem=58
 
-def move_right(x,y):
-    return x+1, y
 
-def move_down(x,y):
-    return x,y-1
+def northwest():
+    li = []
+    a = 1
+    for n in range(1, 7):
+        a = a + (n * 2)
+        li.append(a)
+    return li
 
-def move_left(x,y):
-    return x-1,y
 
-def move_up(x,y):
-    return x,y+1
+def southeast():
+    return []
 
-def gen_points(end):
-    moves = [move_right, move_down, move_left, move_up]
-
-    _moves = cycle(moves)
-    n = 1
-    pos = 0,0
-    times_to_move = 1
-
-    yield n,pos
-
-    while True:
-        for _ in range(2):
-            move = next(_moves)
-            for _ in range(times_to_move):
-                if n >= end:
-                    return
-                pos = move(*pos)
-                n+=1
-                yield n,pos
-
-        times_to_move+=1
-
-def get_diaganol(li, idx_x, idx_y):
-    idx = 1
-    res = []
-    for el in li:
-        x = el[1][0]
-        y = el[1][1]
-        if x == (idx * idx_x) and y == (idx * idx_y):
-            res.append(el[0])
-            idx += 1
-    return res
 
 def main():
+    primes = get_primes(10)
+    print primes
+    print northwest()
+    print southeast()
 
-    # build the spiral
-    SIDE = 7
-    SPIRAL = SIDE * SIDE
-
-    # generate list of tuples
-    li = list(gen_points(SPIRAL))
-
-    # walk out in each of four directions
-    south_east = get_diaganol(li,  1,  1)
-    north_west = get_diaganol(li, -1, -1)
-    south_west = get_diaganol(li, -1,  1)
-    north_east = get_diaganol(li,  1, -1)
-
-    diags = [1] + north_west + north_east + south_west + south_east
-    primes = [p for p in get_primes(diags[-1])]
-    li = [i for i in diags if i in primes]
-    print li, float(len(li)) / float(len(diags))
 
 if __name__ == "__main__":
     start_time = time.time()
     main()
-    print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
+    print("--- %s seconds ---" % "%.2f" % (time.time() - start_time))

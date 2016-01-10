@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 def prime_sieve(limit):
     limit += 1
-    a = [True] * limit 
+    a = [True] * limit
     a[0] = a[1] = False
     for (i, isprime) in enumerate(a):
         if isprime:
             yield i
             for n in xrange(i*i, limit, i):
                 a[n] = False
+
 
 def get_primes(limit):
     p = prime_sieve(limit)

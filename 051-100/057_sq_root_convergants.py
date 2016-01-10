@@ -1,24 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time 
+import time
 from fractions import Fraction
 
 # https://projecteuler.net/problem=57
 
-def frac(i,f=(Fraction(1, 2))):
+
+def frac(i, f=(Fraction(1, 2))):
     if i == 2:
         return Fraction(1, (2 + f))
     i -= 1
     f = Fraction(1, (2 + f))
-    return frac(i,f)
+    return frac(i, f)
+
 
 def main():
     i = 0
-    for n in range(8,980):
+    for n in range(8, 980):
         print n
         f = frac(n)
-        li = str(sum((1,f))).split("/")
+        li = str(sum((1, f))).split("/")
         if (len(li[0]) > len(li[1])):
             i += 1
         print "i", i
@@ -34,4 +36,4 @@ def main():
 if __name__ == "__main__":
     start_time = time.time()
     main()
-    print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
+    print("--- %s seconds ---" % "%.2f" % (time.time() - start_time))

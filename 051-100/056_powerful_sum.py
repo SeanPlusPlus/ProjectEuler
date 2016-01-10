@@ -1,15 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time, math
-
 # https://projecteuler.net/problem=56
+
+import time
+import math
+
 
 def sum_digits(n):
     i = 0
     for num in str(n):
         i += int(num)
     return i
+
 
 def main():
     max_sum = 0
@@ -23,4 +26,4 @@ def main():
 if __name__ == "__main__":
     start_time = time.time()
     main()
-    print("--- %s seconds ---" % "%.2f" % (time.time() - start_time) )
+    print("--- %s seconds ---" % "%.2f" % (time.time() - start_time))
