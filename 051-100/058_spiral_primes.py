@@ -19,8 +19,15 @@ def northwest():
 def southeast():
     li = []
     a = 1
+    m = None
+    multiplier = [4, 4]
     for n in range(1, 7):
-        a = a + (n * 2)
+        try:
+            m = multiplier.pop()
+        except IndexError:
+            multiplier = [m + 4, m + 4]
+            m = multiplier.pop()
+        a = a + m
         li.append(a)
     return li
 
