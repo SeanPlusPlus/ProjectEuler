@@ -17,7 +17,12 @@ def northwest():
 
 
 def southeast():
-    return []
+    li = []
+    a = 1
+    for n in range(1, 7):
+        a = a + (n * 2)
+        li.append(a)
+    return li
 
 
 def main():
