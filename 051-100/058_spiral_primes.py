@@ -31,17 +31,20 @@ def southeast():
 
 
 def main():
-    primes = get_primes(100)
+    primes = get_primes(1000000)
     top_right = northwest()
     bottom_left = southeast()
-    li = []
-    for n in range(6):
+    li = [top_right.next()]
+    for n in itertools.count():
         li.append(top_right.next())
         li.append(bottom_left.next())
-    li.append(top_right.next())
-    print primes
-    print li, len(set(primes) & set(li)), len(li)
-    print float(len(set(primes) & set(li))) / float(len(li))
+        if ((len(li) - 1) % 4) == 0:
+            s = len(set(primes) & set(li))
+            a = float(s) / float(len(li))
+            l = (len(li) + 1) / 2
+            print s, len(li), l
+            if a < 0.5:
+                return
 
     # nums = top_right + bottom_left
     # print nums, len(top_right), len(bottom_left)
