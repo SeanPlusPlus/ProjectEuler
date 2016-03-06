@@ -14,7 +14,7 @@ def is_prime(n):
     return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
 
 
-def northwest():
+def northeast():
     li = []
     a = 1
     for i in itertools.count():
@@ -39,21 +39,21 @@ def southeast():
 def main():
     diag_primes = []
     diags = []
-    nw = northwest()
+    ne = northeast()
     se = southeast()
-    nw.next()  # the start of spiral
+    ne.next()  # the start of spiral
     ratio = 1  # prime ratio
     side_length = 1  # length of side of spiral
     for i in itertools.count():
 
-        nw_next = nw.next()
+        ne_next = ne.next()
         se_next = se.next()
 
-        diags.append(nw_next)
+        diags.append(ne_next)
         diags.append(se_next)
 
-        if is_prime(nw_next):
-            diag_primes.append(nw_next)
+        if is_prime(ne_next):
+            diag_primes.append(ne_next)
         if is_prime(se_next):
             diag_primes.append(se_next)
 
