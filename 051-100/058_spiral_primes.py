@@ -3,9 +3,15 @@
 
 import time
 import itertools
-from primes import get_primes
+import math
 
 # https://projecteuler.net/problem=58
+
+
+def is_prime(n):
+    if n % 2 == 0 and n > 2:
+        return False
+    return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
 
 
 def northwest():
@@ -31,46 +37,36 @@ def southeast():
 
 
 def main():
-    primes = get_primes(1000)
     diag_primes = []
     diags = []
     nw = northwest()
     se = southeast()
-    nw.next()  # this is number one, the start of spiral
+    nw.next()  # the start of spiral
+    ratio = 1  # prime ratio
+    side_length = 1  # length of side of spiral
     for i in itertools.count():
 
         nw_next = nw.next()
-
-        # verify that highest num in spiral in primes set
-        if not (nw_next < primes[-1]):
-            print 'err need more primes'
-            return
-
         se_next = se.next()
-
-        # verify that highest num in spiral in primes set
-        if not (se_next < primes[-1]):
-            print 'err need more primes'
-            return
 
         diags.append(nw_next)
         diags.append(se_next)
-        print "nw.next()", nw_next
-        print "se.next()", se_next
 
-        if nw_next in primes:
+        if is_prime(nw_next):
             diag_primes.append(nw_next)
-        if se_next in primes:
+        if is_prime(se_next):
             diag_primes.append(se_next)
 
         if (i % 2) != 0:
-            print diags  # a complete spiral
-            print diag_primes  # set of primes in diags
+            side_length += 2
+            # print side_length, diags  # a complete spiral
+            # print diag_primes  # set of primes in diags
             total_diags = float(len(diags) + 1)
             total_diag_primes = float(len(diag_primes))
-            print total_diag_primes, "/", total_diags
+            ratio = total_diag_primes / total_diags
+            print side_length, total_diag_primes, "/", total_diags, "=", ratio
 
-        if len(diags) == 12:
+        if ratio < .1:
             return
 
 
