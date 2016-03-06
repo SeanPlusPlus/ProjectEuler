@@ -31,20 +31,24 @@ def southeast():
 
 
 def main():
-    primes = get_primes(1000000)
-    top_right = northwest()
-    bottom_left = southeast()
-    li = [top_right.next()]
-    for n in itertools.count():
-        li.append(top_right.next())
-        li.append(bottom_left.next())
-        if ((len(li) - 1) % 4) == 0:
-            s = len(set(primes) & set(li))
-            a = float(s) / float(len(li))
-            l = (len(li) + 1) / 2
-            print s, len(li), l
-            if a < 0.5:
-                return
+    # primes = get_primes(10000000)
+    diags = []
+    threshold = 5  # must be odd to complete one wrap of square
+    nw = northwest()
+    se = southeast()
+    nw.next()  # this is number one, the start of spiral
+    for i in itertools.count():
+        nw_next = nw.next()
+        se_next = se.next()
+        diags.append(nw_next)
+        diags.append(se_next)
+        print "nw.next()", nw_next
+        print "se.next()", se_next
+        if (i % 2) != 0:
+            # this is a complete spiral
+            print diags
+        if i == threshold:
+            return
 
     # nums = top_right + bottom_left
     # print nums, len(top_right), len(bottom_left)
