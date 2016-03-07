@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
-# https://projecteuler.net/problem=59
+import itertools
+import operator
 
-def nums():
+
+def getCipherText():
     f = open('p059_cipher.txt')
     lines = f.readlines()[0]
     li = []
@@ -10,12 +12,14 @@ def nums():
         li.append(int(l.strip('\n')))
     return li
 
+
 def main():
-    li = nums()
-    print li
-    print ord('A')
-    print ord('*')
-    print ord('k')
+    li = getCipherText()
+    threshold = 6
+    print [li[t] for t in range(threshold)]
+    for i in range(97, 123):
+        print chr(i), [chr(i ^ li[t]) for t in range(threshold)]
+
 
 if __name__ == '__main__':
     main()
