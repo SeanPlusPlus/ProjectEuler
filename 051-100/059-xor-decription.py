@@ -56,7 +56,7 @@ def main():
     #     print chr(the[idx] ^ el), (the[idx] ^ el)
 
     # the above produces g o d
-    # let's assume that is the key and decrupt the cipher text vals
+    # let's assume that is the key and decrypt the cipher text vals
 
     god = [103, 111, 100]
     decrypted = []
