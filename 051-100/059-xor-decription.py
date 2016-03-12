@@ -14,12 +14,19 @@ def getCipherText():
 
 
 def main():
-    li = getCipherText()
-    threshold = 6
-    print [li[t] for t in range(threshold)]
-    for i in range(97, 123):
-        print chr(i), [chr(i ^ li[t]) for t in range(threshold)]
+    cipher = getCipherText()
 
+    # the: 116, 104, 101
+    triples = []
+    the = [116, 104, 101]
+    for j in range(97, 123):
+        for k in range(97, 123):
+            for l in range(97, 123):
+                triples.append([the[0] ^ j, the[1] ^ k, the[2] ^ l])
+
+    print triples
+
+    # search cipher for instances of any triples occuring
 
 if __name__ == '__main__':
     main()
