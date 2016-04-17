@@ -15,9 +15,11 @@ def is_prime(n):
 
 def main():
     nums = [3, 7, 109, 673]
-    for n in nums:
-        print is_prime(n)
-
+    for num in nums:
+        for n in nums:
+            if n != num:
+                concat = [int(str(num) + str(n)), int(str(n) + str(num))]
+                print concat, is_prime(concat[0]), is_prime(concat[1])
 
 
 if __name__ == "__main__":
