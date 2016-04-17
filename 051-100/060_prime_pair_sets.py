@@ -28,10 +28,10 @@ def pairs(nums):
 
 def main():
     for p in sieve.gen_primes():
+        print p
         nums = [3, 7, 109, 673] 
         if p not in nums:
-            # nums.append(p)
-            print nums
+            nums.append(p)
             ans = pairs(nums)
             if ans:
                 print 'answer:', ans
