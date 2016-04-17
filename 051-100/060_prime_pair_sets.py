@@ -37,6 +37,11 @@ def main():
             if ans:
                 print 'answer:', ans, sum(ans)
                 return
+
+    for p in sieve.gen_primes():
+        print p
+        if p > 10:
+            return
     
 
 if __name__ == "__main__":
