@@ -14,21 +14,29 @@ def is_prime(n):
     return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
 
 
-def main():
-    nums = [3, 7, 109, 673]
+def pairs(nums):
     for num in nums:
         compare = [x for x in nums if x != num]
-        print num, compare
         for n in compare:
             concat_front = int(str(num) + str(n))
             concat_back = int(str(n) + str(num))
-            print (is_prime(concat_front) and is_prime(concat_back)), \
-                  concat_front, concat_back
+            if not (is_prime(concat_front) and is_prime(concat_back)):
+                return False
     
-    print nums, sum(nums)
-    for p in sieve.gen_primes():
-        print p
+    return sum(nums) 
 
+
+def main():
+    for p in sieve.gen_primes():
+        nums = [3, 7, 109, 673] 
+        if p not in nums:
+            # nums.append(p)
+            print nums
+            ans = pairs(nums)
+            if ans:
+                print 'answer:', ans
+                return
+    
 
 if __name__ == "__main__":
     start_time = time.time()
