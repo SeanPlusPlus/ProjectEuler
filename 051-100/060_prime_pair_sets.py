@@ -3,6 +3,7 @@
 
 import time
 import math
+import sieve
 
 # https://projecteuler.net/problem=60
 
@@ -19,13 +20,14 @@ def main():
         compare = [x for x in nums if x != num]
         print num, compare
         for n in compare:
-            if n != num:
-                concat_front = int(str(num) + str(n))
-                concat_back = int(str(n) + str(num))
-                print (is_prime(concat_front) and is_prime(concat_back)), \
-                      concat_front, concat_back
+            concat_front = int(str(num) + str(n))
+            concat_back = int(str(n) + str(num))
+            print (is_prime(concat_front) and is_prime(concat_back)), \
+                  concat_front, concat_back
     
     print nums, sum(nums)
+    for p in sieve.gen_primes():
+        print p
 
 
 if __name__ == "__main__":
