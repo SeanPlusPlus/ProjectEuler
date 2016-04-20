@@ -52,8 +52,26 @@ def main():
                 except KeyError:
                     pass
 
+    quads = []
     for t in triples:
         print t
+        for p in primes:
+            if p not in t:
+                if prime_pair([t[0], p]) and \
+                        prime_pair([t[1], p]) and \
+                        prime_pair([t[2], p]):
+                    quads.append(t+ (p,))
+
+    lowest = 10000000
+    ans = None
+    for q in quads:
+        total = sum([int(n) for n in q])
+        if total < lowest:
+            lowest = total
+            ans = q
+
+    print ans, lowest
+
          
 
 if __name__ == "__main__":
