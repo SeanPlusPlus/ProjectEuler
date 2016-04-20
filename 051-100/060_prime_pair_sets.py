@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import itertools
 import time
 import math
 import sieve
@@ -14,35 +15,36 @@ def is_prime(n):
     return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
 
 
-def pairs(nums):
-    for num in nums:
-        compare = [x for x in nums if x != num]
-        for n in compare:
-            concat_front = int(num + n)
-            concat_back = int(n + num)
-            if not (is_prime(concat_front) and is_prime(concat_back)):
-                return False
-    
-    return [int (n) for n in nums]
+def prime_pair(li):
+    concat_front = int(li[0] + li[1])
+    concat_back = int(li[1] + li[0])
+    if not (is_prime(concat_front) and is_prime(concat_back)):
+        return False
+    return ''.join(li)
 
 
 def main():
-    for p in sieve.gen_primes():
-        print p
-        nums = [str(3), str(7) , str(109)]  # , 673] 
-        p = str(p)
-        if p not in nums:
-            nums.append(p)
-            ans = pairs(nums)
-            if ans:
-                print 'answer:', ans, sum(ans)
-                return
+    upperbound = 12
+    primes = []
+    for prime in sieve.gen_primes():
+        primes.append(str(prime))
+        if prime > upperbound:
+            break
 
-    for p in sieve.gen_primes():
-        print p
-        if p > 10:
-            return
-    
+    perms = []
+    for n in itertools.permutations(primes, 2):
+        perms.append(n)
+
+    pairs = {}
+    for pair in perms:
+        res = prime_pair(pair)
+        if res and (res[::-1] not in pairs):
+            pairs[res] = pair
+
+    print pairs
+
+
+        
 
 if __name__ == "__main__":
     start_time = time.time()
