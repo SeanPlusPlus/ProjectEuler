@@ -24,7 +24,7 @@ def prime_pair(li):
 
 
 def main():
-    upperbound = 110
+    upperbound = 710
     primes = []
     for prime in sieve.gen_primes():
         primes.append(str(prime))
@@ -41,9 +41,20 @@ def main():
         if res and (''.join(list(reversed(pair))) not in pairs):
             pairs[res] = pair
 
+    triples = []
     for k,v in pairs.items():
-        print k, pairs[k]
-        
+        for key, val in pairs.items():
+            if (val[0] != v[0]) and (val[1] == v[1]):
+                try:
+                    match = pairs[ v[0] + val[0] ]
+                    match = match + (val[1],)
+                    triples.append(match)
+                except KeyError:
+                    pass
+
+    for t in triples:
+        print t
+         
 
 if __name__ == "__main__":
     start_time = time.time()
