@@ -24,7 +24,7 @@ def prime_pair(li):
 
 
 def main():
-    upperbound = 12
+    upperbound = 110
     primes = []
     for prime in sieve.gen_primes():
         primes.append(str(prime))
@@ -38,12 +38,11 @@ def main():
     pairs = {}
     for pair in perms:
         res = prime_pair(pair)
-        if res and (res[::-1] not in pairs):
+        if res and (''.join(list(reversed(pair))) not in pairs):
             pairs[res] = pair
 
-    print pairs
-
-
+    for k,v in pairs.items():
+        print k, pairs[k]
         
 
 if __name__ == "__main__":
