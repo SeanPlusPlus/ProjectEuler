@@ -42,27 +42,22 @@ def main():
             pairs[res] = pair
 
     triples = []
-    for k,v in pairs.items():
-        for key, val in pairs.items():
-            if (val[0] != v[0]) and (val[1] == v[1]):
-                try:
-                    match = pairs[ v[0] + val[0] ]
-                    match = match + (val[1],)
-                    triples.append(match)
-                except KeyError:
-                    pass
+    for prime in primes:
+        print prime
+        # for k,v in pairs.items():
+
 
     
-    lowest = 1000000000
-    ans = None
-    for t in triples:
-        print t 
-        total = sum([int(n) for n in t])
-        if total < lowest:
-            lowest = total
-            ans = t 
+    # lowest = 1000000000
+    # ans = None
+    # for t in triples:
+        # print t 
+        # total = sum([int(n) for n in t])
+        # if total < lowest:
+            # lowest = total
+            # ans = t 
 
-    print ans, lowest
+    # print ans, lowest
 
          
 
