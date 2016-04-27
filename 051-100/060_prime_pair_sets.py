@@ -25,26 +25,23 @@ def prime_pair(li):
 
 def main():
     upperbound = 700
-    primes = []
+    di = {} 
+    li = []
     for prime in sieve.gen_primes():
-        primes.append(str(prime))
+        di[prime] = set()
+        li.append(prime)
         if prime > upperbound:
             break
 
-    pairs = [] 
-    for prime in primes:
-        for p in primes:
-            if prime_pair([prime, p]):
-                li1 = [prime, p]                
-                li2 = [p, prime]                
-                if li1 and li2 not in pairs:
-                    pairs.append(li1)
+    for k,v in di.items():
+        for el in li:
+            if prime_pair([str(k), str(el)]):
+                v.add(el)
     
-    for p in pairs:
-        if '673' in p:
-            print p
+    for k,v in di.items():
+        print k,v
 
-    print len(pairs)
+
 
 
 if __name__ == "__main__":
