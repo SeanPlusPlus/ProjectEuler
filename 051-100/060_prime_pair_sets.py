@@ -20,46 +20,32 @@ def prime_pair(li):
     concat_back = int(li[1] + li[0])
     if not (is_prime(concat_front) and is_prime(concat_back)):
         return False
-    return ''.join(li)
+    return True
 
 
 def main():
-    upperbound = 110
+    upperbound = 700
     primes = []
     for prime in sieve.gen_primes():
         primes.append(str(prime))
         if prime > upperbound:
             break
 
-    perms = []
-    for n in itertools.permutations(primes, 2):
-        perms.append(n)
-
-    pairs = {}
-    for pair in perms:
-        res = prime_pair(pair)
-        if res and (''.join(list(reversed(pair))) not in pairs):
-            pairs[res] = pair
-
-    triples = []
+    pairs = [] 
     for prime in primes:
-        print prime
-        # for k,v in pairs.items():
-
-
+        for p in primes:
+            if prime_pair([prime, p]):
+                li1 = [prime, p]                
+                li2 = [p, prime]                
+                if li1 and li2 not in pairs:
+                    pairs.append(li1)
     
-    # lowest = 1000000000
-    # ans = None
-    # for t in triples:
-        # print t 
-        # total = sum([int(n) for n in t])
-        # if total < lowest:
-            # lowest = total
-            # ans = t 
+    for p in pairs:
+        if '673' in p:
+            print p
 
-    # print ans, lowest
+    print len(pairs)
 
-         
 
 if __name__ == "__main__":
     start_time = time.time()
