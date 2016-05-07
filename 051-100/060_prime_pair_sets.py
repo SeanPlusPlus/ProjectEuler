@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import itertools
 import time
 import math
 import sieve
@@ -25,7 +24,7 @@ def prime_pair(li):
 
 def main():
     upperbound = 700
-    di = {} 
+    di = {}
     li = []
     for prime in sieve.gen_primes():
         di[prime] = set()
@@ -33,15 +32,15 @@ def main():
         if prime > upperbound:
             break
 
-    for k,v in di.items():
+    for k, v in di.items():
         for el in li:
-            if prime_pair([str(k), str(el)]):
-                v.add(el)
-    
-    for k,v in di.items():
-        print k,v
+            if k < el:
+                if prime_pair([str(k), str(el)]):
+                    v.add(el)
 
-
+    for k, v in di.items():
+        if v:
+            print k, v
 
 
 if __name__ == "__main__":
