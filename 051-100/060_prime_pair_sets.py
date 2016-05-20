@@ -3,15 +3,9 @@
 
 import time
 import math
-import sieve
+from prime import is_prime, sieve
 
 # https://projecteuler.net/problem=60
-
-
-def is_prime(n):
-    if n % 2 == 0 and n > 2:
-        return False
-    return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
 
 
 def prime_pair(li):
@@ -26,7 +20,7 @@ def main():
     upperbound = 700
     di = {}
     li = []
-    for prime in sieve.gen_primes():
+    for prime in gen_primes():
         di[prime] = set()
         li.append(prime)
         if prime > upperbound:

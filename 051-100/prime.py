@@ -1,7 +1,11 @@
-# Sieve of Eratosthenes
-# Code by David Eppstein, UC Irvine, 28 Feb 2002
-# http://code.activestate.com/recipes/117119/
+def is_prime(n):
+    if n % 2 == 0 and n > 2:
+        return False
+    return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
 
+
+# Sieve of Eratosthenes
+# http://code.activestate.com/recipes/117119/
 def gen_primes():
     """ Generate an infinite sequence of prime numbers.
     """
