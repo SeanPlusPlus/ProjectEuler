@@ -16,23 +16,33 @@ def prime_pair(a, b):
 
 
 def main():
-    upperbound = 700
+    upperbound = 110
     primes = []
     for prime in gen_primes():
         if prime > upperbound:
             break
         primes.append(prime)
 
-    pairs = set()
+    pairs = {}
     for p in primes:
         for prime in primes:
             if p < prime:
                 a = str(p)
                 b = str(prime)
                 if prime_pair(a, b):
-                    pairs.add(a + ',' + b)
+                    try:
+                        pairs[p].add(prime)
+                    except KeyError:
+                        pairs[p] = set()
+                        pairs[p].add(prime)
 
-    print pairs
+    for k, v in pairs.items():
+        print k, v
+        for val in v:
+            if val in pairs:
+                i = set.intersection(v, pairs[val])
+                if i:
+                    print '*', k, val, i.pop()
 
 if __name__ == "__main__":
     start_time = time.time()
