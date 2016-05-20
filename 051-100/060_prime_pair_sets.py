@@ -2,40 +2,37 @@
 # -*- coding: utf-8 -*-
 
 import time
-import math
-from prime import is_prime, sieve
+from prime import is_prime, gen_primes 
 
 # https://projecteuler.net/problem=60
 
 
-def prime_pair(li):
-    concat_front = int(li[0] + li[1])
-    concat_back = int(li[1] + li[0])
-    if not (is_prime(concat_front) and is_prime(concat_back)):
+def prime_pair(a, b):
+    if not is_prime(int(a + b)):
+        return False
+    if not is_prime(int(b + a)):
         return False
     return True
 
 
 def main():
     upperbound = 700
-    di = {}
-    li = []
+    primes = []
     for prime in gen_primes():
-        di[prime] = set()
-        li.append(prime)
         if prime > upperbound:
             break
+        primes.append(prime)
 
-    for k, v in di.items():
-        for el in li:
-            if k < el:
-                if prime_pair([str(k), str(el)]):
-                    v.add(el)
+    pairs = set()
+    for p in primes:
+        for prime in primes:
+            if p < prime:
+                a = str(p)
+                b = str(prime)
+                if prime_pair(a, b):
+                    pairs.add(a + ',' + b)
 
-    for k, v in di.items():
-        if v:
-            print k, v
-
+    print pairs
 
 if __name__ == "__main__":
     start_time = time.time()
