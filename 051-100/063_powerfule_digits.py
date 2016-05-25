@@ -5,7 +5,9 @@
 
 
 def main():
-    print 7 ** 5
+    power = 5
+    p = 7 ** power
+    print p, len(str(p)) == power
 
 if __name__ == '__main__':
     main()
