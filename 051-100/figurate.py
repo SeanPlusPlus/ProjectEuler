@@ -9,3 +9,6 @@ class Figurate:
     def pentagonal(self, n):
         return n * ((3 * n) - 1) / 2
 
+    def hexagonal(self, n):
+        return n * (2 * n) - 1
+
